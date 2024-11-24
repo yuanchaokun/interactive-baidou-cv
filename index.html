@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>袁朝坤的简历 - To 卡兹克</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+        body {
+            margin: 0;
+            padding: 40px;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            font-family: 'Press Start 2P', cursive;
+            min-height: 100vh;
+            cursor: pointer;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            gap: 1rem;
+        }
+
+        .kazike-avatar {
+            width: 50px;
+            height: 50px;
+            margin: 0 1rem;
+            image-rendering: pixelated;
+        }
+
+        .continue-prompt {
+            text-align: center;
+            animation: blink 1s infinite;
+            margin-top: 2rem;
+            font-size: 1.2em;
+        }
+
+        .continue-prompt span {
+            display: block;
+            margin-top: 1rem;
+            font-size: 0.8em;
+        }
+
+        .content {
+            opacity: 0;
+            transition: opacity 0.5s;
+            position: relative;    /* 新增：设置为相对定位 */
+            padding-bottom: 60px;  /* 新增：为签名留出空间 */
+        }
+
+        .typed-text {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        #sections {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .title {
+            color: #b7ff00;
+            margin: 0;
+            padding: 0.5rem 0;
+            font-size: 1.2em;
+        }
+
+        .description {
+            margin: 0.5rem 0;
+            line-height: 1.8;
+            white-space: pre-line;
+        }
+
+        .keywords {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 0.5rem 0 1rem 0;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+
+        .keyword {
+            background: #2a2a2a;
+            padding: 8px 16px;
+            border-radius: 6px;
+            color: #ffffff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.8em;
+            border: 1px solid #3a3a3a;
+        }
+
+        .keyword:hover {
+            background: #3a3a3a;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        @keyframes appear {
+            from { 
+                opacity: 0; 
+                transform: translateY(20px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+
+        @keyframes explode {
+            to {
+                opacity: 0;
+                transform: scale(1.5);
+            }
+        }
+
+        .audio-wave {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .wave-bar {
+            width: 3px;
+            height: 20px;
+            background-color: #ffffff;
+            animation: wave 1s ease-in-out infinite;
+        }
+
+        @keyframes wave {
+            0%, 100% { height: 20px; }
+            50% { height: 40px; }
+        }
+
+        .music-icon {
+            position: fixed;
+            right: 2rem;
+            top: 2rem;
+            font-size: 2rem;
+            cursor: pointer;
+            display: none;
+            transition: transform 0.3s;
+        }
+
+        .music-icon:hover {
+            transform: scale(1.1);
+        }
+
+        .section {
+            margin: 0;
+            padding: 0;
+        }
+
+        .description-container {
+            margin: 0.5rem 0;
+        }
+
+        .keywords.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .signature {
+    margin-top: 2rem;
+    text-align: right;
+}
+body, .container, p, span, div {
+    font-family: 'Press Start 2P', cursive !important;
+}
+.signature-content {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+    position: absolute;    /* 新增：使用绝对定位 */
+    right: 350px;             /* 新增：靠右对齐 */
+    bottom: -6px;        /* 新增：向下偏移，可以根据需要调整数值 */
+}
+
+.signature-content.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="continue-prompt">
+            To KHA'ZIX
+            <span>Click anywhere</span>
+        </div>
+        <div class="content">
+            <div class="header">
+                <h1>To</h1>
+                <h1>卡兹克</h1>
+                <img src="kazike.png" alt="卡兹克头像" class="kazike-avatar">
+                <h1>：</h1>
+            </div>
+            <div class="typed-text">
+                你好~我是袁朝坤（网名醋泡白豆），从《流浪地球》的视频开始关注「数字生命卡兹克」公众号，已经一年多了，非常喜欢你的文章，太有启发太好玩了。在一个平常的周五，突然看到了招聘的推送，放大一看，很适合我，于是留言说下班改简历就投！写完常规简历后越总结越兴奋，于是用ai做了这个网页简历：
+
+    
+            </div>
+            <div id="sections"></div>
+        </div>
+    </div>
+
+    <div class="music-icon">🎵</div>
+    <div class="audio-wave">
+        <div class="wave-bar"></div>
+        <div class="wave-bar" style="animation-delay: 0.1s"></div>
+        <div class="wave-bar" style="animation-delay: 0.2s"></div>
+        <div class="wave-bar" style="animation-delay: 0.3s"></div>
+        <div class="wave-bar" style="animation-delay: 0.4s"></div>
+        <div class="wave-bar" style="animation-delay: 0.5s"></div>
+        <div class="wave-bar" style="animation-delay: 0.6s"></div>
+        <div class="wave-bar" style="animation-delay: 0.7s"></div>
+        <div class="wave-bar" style="animation-delay: 0.8s"></div>
+        <div class="wave-bar" style="animation-delay: 0.9s"></div>
+    </div>
+    <div id="sections"></div>
+<div class="signature" style="display: none;">
+    <div class="signature-content">
+        <span>From 醋泡白豆</span>
+        <img src="baidou.png" alt="醋泡白豆头像" class="avatar">
+    </div>
+</div>
+    <audio id="bgMusic" src="开启新征程.mp3" loop></audio>
+    <script>
+        const sections = [
+            {
+                title: "1. AI深度玩家，玩过各大AI工具和产品。",
+                description: "我想，这不就是我嘛，在 AI 大模型之前，想搭建个人博客，去自学了一个多月的前端，购买服务器域名解析什么的，卡住一步就不得不到处搜教程、问程序员朋友，近半年才搭建成功第一版个人博客。2023年初的 GPT3.5 推出，就立马用上了， 不算特别智能，但对于理解陌生领域的概念，帮助太大了，后面改版个人博客不到半天就搞定。GPT4 推出，果断付费上车。之后就几乎每天都在用 AI 了，线下读书会分享，线上写文章安利。\n\n新模型新工具层出不穷，不管怎样，Skin in the game 先用上试试再说。于是试过了Claude、Grok、Kimi、元宝、豆包；绘图类用过了 Midjourney、Grok、可灵、即梦 ；音频类用过了Suno.ai、NotebookLM、fish.audio AI产品也付费了不少，记录饮食的「胃之书」、AI 语音笔记软件 Voicenotes、Clicknow 屏幕划词智能解释软件、devv.ai、bolt.new、napkin.ai、cursor等等，还入手了 Meta Rayban 智能眼镜，手指抵着镜腿就能调用 Meta 的羊驼大模型。\n\n配合 AI 做了一些自己用的小工具：个人浏览器主页、避免赛博红灯区的微博发送页、屏蔽微博图片和视频的浏览器插件、新开网页随机出现博主金句的浏览器插件\n\n有了 AI 工具，很多不可能变成可能，很多流程变得更容易。世界在加速，喜欢这种「推背感」。",
+                keywords: [
+                    { text: "工作主页", url: "https://cdn.jsdelivr.net/gh/yuanchaokun/picx-images-hosting@master/image.32hzqyfm6l.webp" },
+                    { text: "微博发送页", url: "https://weibo.cupaobaidou.com/" },
+                    { text: "屏蔽微博多媒体插件", url: "https://weibo.cupaobaidou.com/" },
+                    { text: "随机金句插件", url: "https://cdn.jsdelivr.net/gh/yuanchaokun/picx-images-hosting@master/CleanShot-2024-11-20-at-18.16.52@2x.7w6un2yale.webp" },
+                    { text: "我这样使用gpt", url: "https://www.cupaobaidou.com/archives/820/" },
+                    { text: "「以我为主」用ai", url: "https://www.cupaobaidou.com/archives/927/" }
+                ]
+            },
+            {
+                title: "2. 有过智能体搭建经验、绘图模型Lora微调经验、AI视频创作经验(有一条就行)。",
+                description: "这条不像上条那么符合，今年制作了十多个歌曲MV视频都用到 AI 了，不过是自己写词，用 Suno 来调试创作，如果想听听，文字加载完后，会出现在这个页面的左右两边。\n\n智能体搭建过几个不成型的，感觉对实际的效率提升不高，转而在 AI 帮助下，写了很多个 Keyboard Maestro （自动化软件）的宏，让很多常做的事情，一个快捷键完全自动化了。\n\n为了完完全符合，我在 AI 的帮助下，做了这个互动简历页面，用 coze 做了一个 「活简历智能体」嵌入这个页面，就在右下角。欢迎问它更多问题，让它替我预面试。",
+                keywords: [
+                    { text: "右下角「活简历」智能体",},
+                    { text: "Keyboard Maestro 宏", url: "https://cdn.jsdelivr.net/gh/yuanchaokun/picx-images-hosting@master/image.9rjffp71j0.webp" }
+                ]
+            },
+            {
+                title: "3. 是一个靠谱的人，说到做到。",
+                description: "个人认为自己还是很靠谱，有些数据在：\n\n连续写了近 1000 天的日志，共计 100 多期的公开阅读周报，每半年立一个 Flag：每周周一更新周报，鸽了就发 25 元的口令红包，再鸽就翻倍，通过实际的损失，调整对自己的实际认识。总计发出去了 300 左右的红包。后面 Flag 基本都能完成了。",
+                keywords: [
+                    { text: "自制AI视频", url: "https://space.bilibili.com/40051541?spm_id_from=333.788.0.0" },
+                    { text: "1000日志", url: "https://cupaobaidou.com/archives/846/" },
+                    { text: "100期周报", url: "https://cupaobaidou.com/archives/1061/" },
+                    { text: "承诺挑战", url: "https://cupaobaidou.com/archives/22/" },
+                    { text: "「时报」数据（已脱敏）", url: "https://auwwgc2fnl.feishu.cn/base/SYGrbCni2a0dTGsZ5ZvcuHy9nVd?from=from_copylink" }
+                ]
+            },
+            {
+                title: "4. 对这个世界永远保持好奇心。",
+                description: "既要 Explore，又要 Exploit。对世界永远保持好奇，这个太符合了。\n\n大一和朋友打赌，要一年读 100 本书，到现在 8 年，已经读完了 1000 本，养成了习惯。\n\n每年也会做一些没做过的事，这几年尝试了：\n连续每年献血、跑马拉松、斯巴达障碍赛、双语导游、自己搭建网站、连续一年每周送出一份礼物、间歇重复记忆等等。",
+                keywords: [
+                    { text: "Explore,Explicit", url: "https://cupaobaidou.com/archives/864/" },
+                    { text: "保持阅读", url: "https://cupaobaidou.com/archives/699/" },
+                    { text: "斯巴达", url: "https://cupaobaidou.com/archives/779/" },
+                    { text: "双语导游", url: "https://cupaobaidou.com/archives/1096/" },
+                    { text: "增强记忆力", url: "https://weibo.com/5656421993/OufE5larF" }
+                ]
+            }
+        ];
+
+        let hasStarted = false;
+        const content = document.querySelector('.content');
+        const bgMusic = document.getElementById('bgMusic');
+        const musicIcon = document.querySelector('.music-icon');
+        const audioWave = document.querySelector('.audio-wave');
+
+        async function typeWriter(element, text) {
+            element.style.visibility = 'visible';
+            element.textContent = '';
+            const lines = text.split('\n');
+            
+            for (const line of lines) {
+                for (const char of line) {
+                    element.textContent += char;
+                    await new Promise(resolve => setTimeout(resolve, 30));
+                }
+                if (line !== lines[lines.length - 1]) {
+                    element.textContent += '\n';
+                }
+            }
+        }
+
+        async function showSection(section) {
+            const sectionsContainer = document.getElementById('sections');
+            
+            // 创建标题
+            const titleElement = document.createElement('h2');
+            titleElement.classList.add('title');
+            titleElement.textContent = section.title;
+            sectionsContainer.appendChild(titleElement);
+
+            // 创建临时描述容器
+            const descContainer = document.createElement('div');
+            descContainer.classList.add('description-container');
+            const descriptionElement = document.createElement('p');
+            descriptionElement.classList.add('description');
+            descContainer.appendChild(descriptionElement);
+            sectionsContainer.appendChild(descContainer);
+
+            // 显示描述
+            await typeWriter(descriptionElement, section.description);
+            
+            // 等待3秒
+            await new Promise(resolve => setTimeout(resolve, 3000));
+            
+            // 描述消失动画
+            descriptionElement.style.animation = 'explode 0.5s forwards';
+            await new Promise(resolve => setTimeout(resolve, 500));
+            
+            // 移除描述容器
+            descContainer.remove();
+
+            // 创建并显示关键词（直接放在标题后面）
+            const keywordsContainer = document.createElement('div');
+            keywordsContainer.classList.add('keywords');
+            section.keywords.forEach(keyword => {
+                const keywordElement = document.createElement('a');
+                keywordElement.classList.add('keyword');
+                keywordElement.href = keyword.url;
+                keywordElement.target = '_blank';
+                keywordElement.textContent = keyword.text;
+                keywordsContainer.appendChild(keywordElement);
+            });
+            titleElement.insertAdjacentElement('afterend', keywordsContainer);
+            
+            // 显示关键词
+            setTimeout(() => keywordsContainer.classList.add('show'), 100);
+        }
+
+        async function showAllSections() {
+            for (const section of sections) {
+                await showSection(section);
+            }
+        }
+
+        document.body.addEventListener('click', async () => {
+            if (hasStarted) return;
+            hasStarted = true;
+
+            document.querySelector('.continue-prompt').style.display = 'none';
+            musicIcon.style.display = 'block';
+            audioWave.style.opacity = '1';
+            content.style.opacity = '1';
+
+            bgMusic.play();
+            await typeWriter(document.querySelector('.typed-text'), document.querySelector('.typed-text').textContent);
+            await showAllSections();
+        });
+
+        musicIcon.addEventListener('click', (event) => {
+            event.stopPropagation();
+            if (bgMusic.paused) {
+                bgMusic.play();
+                audioWave.style.opacity = '1';
+            } else {
+                bgMusic.pause();
+                audioWave.style.opacity = '0.3';
+            }
+        });
+        async function showAllSections() {
+    for (const section of sections) {
+        await showSection(section);
+    }
+    // 显示签名
+    const signature = document.querySelector('.signature');
+    const signatureContent = document.querySelector('.signature-content');
+    signature.style.display = 'block';
+    setTimeout(() => signatureContent.classList.add('show'), 100);
+
+    // 等待签名显示完成后再加载视频
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    loadVideos();
+}
+function loadVideos() {
+    const videoSection = document.createElement('div');
+    videoSection.style.opacity = '0';
+    videoSection.style.transition = 'opacity 1s ease';
+    videoSection.innerHTML = `
+        <style>
+            .left-videos {
+                position: absolute;
+                left: 20px;
+                top: 50%;
+                transform: translateY(-50%);
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                width: 20vw;
+            }
+            .right-videos {
+                position: absolute;
+                right: 20px;
+                top: 50%;
+                transform: translateY(-50%);
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                width: 20vw;
+            }
+            .video-container {
+                position: relative;
+                width: 100%;
+                padding-bottom: 56.25%;
+                border-radius: 12px;
+                overflow: hidden;
+                background-color: #2a2a2a;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            }
+            .video-container iframe {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                border-radius: 12px;
+            }
+            .video-description {
+                margin-top: 8px;
+                color: #ffffff;
+                font-size: 12px;
+                line-height: 1.4;
+                opacity: 0.8;
+                text-align: center;
+                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            }
+        </style>
+        <div class="left-videos">
+            <div>
+                <div class="video-container">
+                    <iframe src="https://player.bilibili.com/player.html?isOutside=true&aid=113514794454614&bvid=BV1ueSTYqE2T&cid=26858163066&p=1&autoplay=0&high_quality=1&danmaku=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+                </div>
+                <div class="video-description">两个AI来聊聊读完 1000 本书这件事</div>
+            </div>
+            <div>
+                <div class="video-container">
+                    <iframe src="https://player.bilibili.com/player.html?isOutside=true&aid=113513301279485&bvid=BV1QgSKYPEun&cid=26853050865&p=1&autoplay=0&high_quality=1&danmaku=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+                </div>
+                <div class="video-description">写给朋友生日的歌曲</div>
+            </div>
+        </div>
+        <div class="right-videos">
+            <div>
+                <div class="video-container">
+                    <iframe src="https://player.bilibili.com/player.html?isOutside=true&aid=113513301279187&bvid=BV1QgSKYPEPs&cid=26853050234&p=1&autoplay=0&high_quality=1&danmaku=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+                </div>
+                <div class="video-description">福格行为模型读完后的歌曲笔记</div>
+            </div>
+            <div>
+                <div class="video-container">
+                    <iframe src="https://player.bilibili.com/player.html?isOutside=true&aid=112881219668327&bvid=BV1KBvWeZEBE&cid=500001633809269&p=1&autoplay=0&high_quality=1&danmaku=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+                </div>
+                <div class="video-description">网上社群周年庆MV纪念视频</div>
+            </div>
+        </div>
+    `;
+    
+    document.body.appendChild(videoSection);
+    
+    // 使用 setTimeout 确保 DOM 更新后再显示
+    setTimeout(() => {
+        videoSection.style.opacity = '1';
+    }, 100);
+}
+
+    </script>
+      <script src="https://lf-cdn.coze.cn/obj/unpkg/flow-platform/chat-app-sdk/1.0.0-beta.4/libs/cn/index.js"></script>
+      <script>
+          new CozeWebSDK.WebChatClient({
+            config: {
+              bot_id: '7438883486531993635',
+            },
+            componentProps: {
+              title: 'Coze',
+            },
+          });
+      </script>
+    
+</body>
+</html>
